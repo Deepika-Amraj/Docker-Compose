@@ -1,0 +1,61 @@
+1. Introduction to Docker Compose
+What is Docker Compose?
+Docker Compose is a tool for defining and managing multi-container Docker applications. Using a single YAML configuration file (docker-compose.yml), you can define your services and control them with simple commands to start or stop your entire application.
+
+Key Commands:
+
+docker-compose up — Starts and runs all services defined in the docker-compose.yml file.
+docker-compose down — Stops and removes containers, networks, and volumes.
+
+What is YAML?
+YAML, or "Yet Another Markup Language," is used for configuration files. It’s human-readable and makes setting up configurations in Docker Compose files easier. YAML files typically have .yml or .yaml extensions.
+
+2. Sample docker-compose.yml
+
+version: '3'
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+
+3. Docker Commands for Container Management
+Pull a Docker Image and Run as Non-Root User
+Pull Docker Image:
+
+docker pull nginx
+Run Container as a Non-Root User:
+
+Add the current user to the Docker group to avoid using sudo for each command:
+sudo usermod -aG docker $USER
+
+Reboot to apply changes:
+sudo reboot
+
+Run the Docker Container:
+docker run -d nginx
+
+Inspect and Manage Containers
+Inspect the Container’s Processes and Ports:
+
+
+docker inspect <container_name>
+View Logs for a Container:
+
+
+docker logs <container_name>
+Start and Stop Containers:
+
+
+docker stop <container_name>
+docker start <container_name>
+Remove a Container:
+
+
+docker rm <container_name>
+
+
